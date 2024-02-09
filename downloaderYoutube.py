@@ -88,11 +88,11 @@ print("Criado Por: Yasser Ibrahim Abdallah Vaz Condoluci!")
 printColorido(('***'*20))
 print("\n\nAtenção! Para efetuar o download de uma playlist, certifique-se que o link é de uma playlist mesmo.")
 print("Para ter certeza que é uma playlist siga os passos a seguir:")
-print("""
+print('''
 1 - Em sua playlist clique nos três pontos acima da lista de vídeos e clique em "GUARDAR PLAYLIST NA BIBLIOTECA".
 2 - Ao lado da logo do Youtube, clique no icone com três barras e depois em "mostrar mais".
 3 - Quando clicar em "Mostrar mais" aparecerá uma lista das playslist salvas, procure a playlist desejada e copie o link dela.
-""")
+''')
 while True:
     print('\n\n\n')
     link = str(input('Copie o link do video ou ta playlist que deseja baixar aqui: '))

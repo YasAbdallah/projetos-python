@@ -1,7 +1,8 @@
 from pytube import YouTube, Playlist
 from moviepy.editor import AudioFileClip
 import os
-from time import sleep 
+from time import sleep
+import datetime
 import PySimpleGUI as sg
 
 
@@ -25,7 +26,7 @@ def conversor(caminho):
 def infoVideo(objVideo):
     window['-TITULO-'].update(f"Título: {objVideo.title}")
     window['-VISUALIZACAO-'].update(f"Views: {objVideo.views}")
-    window['-DURACAO-'].update(f"Duração do Vídeo: {float(objVideo.length) / 60:.2f}")
+    window['-DURACAO-'].update(f"Duração do Vídeo: {str(datetime.timedelta(seconds=objVideo.length))}")
     window.refresh()
 
 def downloadPlaylist(objVideo, qualidade, audioOrVideo=0):

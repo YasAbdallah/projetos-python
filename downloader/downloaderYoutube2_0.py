@@ -179,8 +179,8 @@ corpo = [
 ]
 rodape = [
     [
-        sg.Text("Desenvolvido por:", font=("Franklin Gotic", 12), pad=((480, 0), (5, 0))),
-        sg.Text("Yasser Ibrahim.", font=("Freestyle Script", 16), pad=((0, 0), (5, 0))),
+        sg.Text("Desenvolvido por:", font=("Franklin Gotic", 12), pad=((450, 0), (100, 0))),
+        sg.Text("Yasser Ibrahim.", font=("Freestyle Script", 16), pad=((0, 0), (100, 0))),
     ],
 ]
 layout = [

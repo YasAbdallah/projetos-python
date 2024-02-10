@@ -83,7 +83,7 @@ cabecalho = [
             [
                 [
                     sg.Image(
-                        source=("downloader/img/baixar.png"),
+                        source=("./img/baixar.png"),
                         key="-DOWNLOAD-",
                         size=(32,32),
                         enable_events=True,
@@ -157,7 +157,7 @@ corpo = [
                                             [],
                                             [],
                                             [sg.Text("", enable_events=True, key="-EVENTS-",font=("Arial", 16)), 
-                                            sg.Image(source=("downloader/img/certo.png"), key="-FIM-", size=(32,32), enable_events=True, visible=False)],
+                                            sg.Image(source=("./img/certo.png"), key="-FIM-", size=(32,32), enable_events=True, visible=False)],
                                         ]
                                     )
                                 ],

@@ -15,22 +15,22 @@ def conversor(caminho, remover):
         print("Convertido com sucesso!")
 
 def pesquisa(caminho):
-    files = os.scandir(caminho)
+    arquivos = os.scandir(caminho)
     deletar = False
     if messagebox.showinfo(title='Deletar os arquivos?', message="Deseja deletar os arquivos Originais?"):
         deletar = True
-    for file in files:
-        match file.name[file.name.rfind(".")+1:]:
+    for arquivo in arquivos:
+        match arquivo.name[arquivo.name.rfind(".")+1:]:
             case "mp4":
-                conversor(os.path.join(caminho, file.name), deletar)
+                conversor(os.path.join(caminho, arquivo.name), deletar)
             case "webm":
-                conversor(os.path.join(caminho, file.name), deletar)
+                conversor(os.path.join(caminho, arquivo.name), deletar)
             case "wav":
-                conversor(os.path.join(caminho, file.name), deletar)
+                conversor(os.path.join(caminho, arquivo.name), deletar)
             case "wma":
-                conversor(os.path.join(caminho, file.name), deletar)
+                conversor(os.path.join(caminho, arquivo.name), deletar)
             case "avi":
-                conversor(os.path.join(caminho, file.name), deletar)
+                conversor(os.path.join(caminho, arquivo.name), deletar)
             case _:
                 pass
 

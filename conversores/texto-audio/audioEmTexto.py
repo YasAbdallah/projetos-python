@@ -17,18 +17,16 @@ def conversor(caminho, remover = True):
 
 
 try:
-    path = os.path.join(os.getcwd(), 'textoEmFalaEFalaEmTexto\\audio\\frase.mp3')
-    path2 = conversor(path)
-    file_audio = sr.AudioFile(path2)
-    r = sr.Recognizer()
-    with file_audio as source:
-        audio_text = r.record(source)
-        text = r.recognize_google(audio_text, language='pt-br')
+    pasta_audio = os.path.join(os.getcwd(), 'audio\\frase.mp3')
+    converter_arquivo_audio = conversor(pasta_audio)
+    arquivo_audio = sr.AudioFile(converter_arquivo_audio)
+    recognizer = sr.Recognizer()
+    with arquivo_audio as source:
+        audio_texto = recognizer.record(source)
+        texto = recognizer.recognize_google(audio_texto, language='pt-br')
         
-        arq = open(os.path.join(os.getcwd(), 'textoEmFalaEFalaEmTexto\\texto\\texto.txt'), 'w')
-        arq.write(text)
-        arq.close()
-        print(text)
-        os.remove(path2)
+        with open(os.path.join(os.getcwd(), 'texto\\texto.txt'), 'w') as arquivo:
+            arquivo.write(texto)
+        os.remove(converter_arquivo_audio)
 except Exception as e:
     print(e)

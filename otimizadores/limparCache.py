@@ -1,20 +1,19 @@
 import os
 
-user = os.getlogin()
+usuario = os.getlogin()
 
-pastas = ['C:\\Windows\\Temp', f'C:\\Users\\{user}\\AppData\\Local\\Temp', 'C:\\Windows\\Prefetch']
+pastas = ['C:\\Windows\\Temp', f'C:\\Users\\{usuario}\\AppData\\Local\\Temp', 'C:\\Windows\\Prefetch']
 
-for i in pastas:
+for pasta in pastas:
     try:
-        arqs = os.listdir(i)
-        for arq in arqs:
+        arquivos = os.listdir(pasta)
+        for arquivo in arquivos:
             try:
-                #print(os.path.join(i, arq))
-                os.remove(os.path.join(i, arq))
+                os.remove(os.path.join(pasta, arquivo))
             except Exception as e:
                 print('Sem permissão.', e)
-    except:
-        pass
+    except Exception as e:
+        print(e)
 
 print("Fim")
 input("Aperte qualquer tecla para finalizar.")

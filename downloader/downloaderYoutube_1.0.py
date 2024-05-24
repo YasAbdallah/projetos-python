@@ -16,19 +16,19 @@ def printColorido(palavras):
     print(frase)
 
 def conversor(caminho):
-    files = os.scandir(caminho)
-    for file in files:
-        if ".mp4" in file.name or ".webm" in file.name:
+    arquivos = os.scandir(caminho)
+    for arquivo in arquivos:
+        if ".mp4" in arquivo.name or ".webm" in arquivo.name:
             try:
-                print(f"Convertendo {file.name} para mp3")
-                video = AudioFileClip(os.path.join(caminho, file.name))
-                video.write_audiofile(os.path.join(caminho, f'{file.name[:file.name.rfind(".")+1]}mp3'))
+                print(f"Convertendo {arquivo.name} para mp3")
+                video = AudioFileClip(os.path.join(caminho, arquivo.name))
+                video.write_audiofile(os.path.join(caminho, f'{arquivo.name[:arquivo.name.rfind(".")+1]}mp3'))
                 video.close()
             except Exception as e:
                 print(e)
             else:
-                print(file.name)
-                os.remove(os.path.join(caminho, file.name))
+                print(arquivo.name)
+                os.remove(os.path.join(caminho, arquivo.name))
                 print("Arquivo convertido com Sucesso!")
 
 def resolucao():
@@ -104,10 +104,10 @@ while True:
         print('\n\n')
         match opcoes:
             case 1:
-                res = resolucao()
+                qualidade_video = resolucao()
                 break
             case 2:
-                som = qualidadeAudio()
+                qualidade_som = qualidadeAudio()
                 break
             case _:
                 print("Valor invalido. Tente Novamente.")
@@ -120,7 +120,10 @@ while True:
         for video in playlist.videos:
             try:
                 print(f"Baixando {video.title}")
-                video.streams.filter(file_extension='mp4', res=res).first().download(output_path=caminho) if opcoes == 1 else  video.streams.filter(only_audio=True, abr=som).first().download(output_path=caminho)
+                if opcoes == 1:
+                    video.streams.filter(file_extension='mp4', res=qualidade_video).first().download(output_path=caminho)
+                else:
+                    video.streams.filter(only_audio=True, abr=qualidade_som).first().download(output_path=caminho)
             except:
                 print(f"Ocorreu um erro ao baixar o {'video' if opcoes == 1 else 'áudio'}.")
             else:
@@ -137,19 +140,21 @@ while True:
         except Exception as e:
             print(e)
     else:
-        unico = YouTube(link)
+        video_unico = YouTube(link)
         try:
-            print(f"Baixando {unico.title}")
-            unico.streams.filter(file_extension='mp4', res=res).first().download(output_path=caminho) if opcoes == 1 else  unico.streams.filter(only_audio=True, abr=som).first().download(output_path=caminho)
+            print(f"Baixando {video_unico.title}")
+            if opcoes == 1:
+                video_unico.streams.filter(file_extension='mp4', res=qualidade_video).first().download(output_path=caminho)
+            else:
+                video_unico.streams.filter(only_audio=True, abr=qualidade_som).first().download(output_path=caminho)
         except:
             print(f"Ocorreu um erro ao baixar o {'video' if opcoes == 1 else 'áudio'}.")
         else:
             printColorido("*"*60)
             print(f"Download do {'video' if opcoes == 1 else 'áudio'} efetuado com sucesso!")
             conversor(caminho) if opcoes == 2 else ''
-    
-    continuar = input('Deseja Baixar mais alguma coisa? [s - Para continuar | n - Para sair]')
-    if 's' in continuar:
+
+    if 's' in input('Deseja Baixar mais alguma coisa? [s - Para continuar | n - Para sair]'):
         continue
     else:
         printColorido("*"*60)

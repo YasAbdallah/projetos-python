@@ -7,23 +7,23 @@ import PySimpleGUI as sg
 
 
 def conversor(caminho):
-    files = os.scandir(caminho)
-    for file in files:
-        if ".mp4" in file.name or ".webm" in file.name:
+    arquivos = os.scandir(caminho)
+    for arquivo in arquivos:
+        if ".mp4" in arquivo.name or ".webm" in arquivo.name:
             try:
-                with AudioFileClip(os.path.join(caminho, file.name)) as converter:
+                with AudioFileClip(os.path.join(caminho, arquivo.name)) as converter:
                     window['-EVENTS-'].update(f"Convertendo áudio para mp3")
                     window.refresh()
-                    converter.write_audiofile(os.path.join(caminho, f'{file.name[:file.name.rfind(".")+1]}mp3'), logger=None)
+                    converter.write_audiofile(os.path.join(caminho, f'{arquivo.name[:arquivo.name.rfind(".")+1]}mp3'), logger=None)
             except Exception as e:
                 sg.PopupError("Ocorreu um erro ao tentar converter o áudio: ", e)
             else:
                 window['-EVENTS-'].update(f"Conversão concluida.")
                 window.refresh()
                 sleep(1)
-                os.remove(os.path.join(caminho, file.name))
+                os.remove(os.path.join(caminho, arquivo.name))
 
-def infoVideo(objVideo):
+def informacaoVideo(objVideo):
     window['-TITULO-'].update(f"Título: {objVideo.title}")
     window['-VISUALIZACAO-'].update(f"Views: {objVideo.views}")
     window['-DURACAO-'].update(f"Duração do Vídeo: {str(datetime.timedelta(seconds=objVideo.length))}")
@@ -209,7 +209,7 @@ while True:
 
 
     if window['-URLVIDEO-'].get() != '':
-        infoVideo(YouTube(window['-URLVIDEO-'].get()))
+        informacaoVideo(YouTube(window['-URLVIDEO-'].get()))
     elif window['-URLVIDEO-'].get() == '':
         window['-TITULO-'].update("Título: ")
         window['-VISUALIZACAO-'].update("Visualizações: ")
@@ -217,13 +217,13 @@ while True:
 
     # Pegando qualidade de vídeo
     if event == "240p" or event == "360p" or event == "480p" or event == "720p" or event == "1080p":
-        tipoDownload = '-cbox_video-'
-        qualidade = event
+        tipo_download = '-cbox_video-'
+        qualidade_download = event
 
     # Pegando qualidade de áudio
     if event == "48kbps" or event == "50kbps" or event == "70kbps" or event == "128kbps" or event == "160kbps":
-        tipoDownload = '-cbox_audio-'
-        qualidade = event
+        tipo_download = '-cbox_audio-'
+        qualidade_download = event
 
     #Botão de para fazer Download
     if event == '-DOWNLOAD-':
@@ -232,15 +232,15 @@ while True:
         elif window['-GETPATH-'].get() == '':
             sg.Popup("Você não escolheu onde deseja salvar. Escolha uma pasta para continuar.")
         else:
-            if tipoDownload == '-cbox_video-':
+            if tipo_download == '-cbox_video-':
                 if 'playlist' in window['-URLVIDEO-'].get():
-                    downloadPlaylist(Playlist(window['-URLVIDEO-'].get()), qualidade)
+                    downloadPlaylist(Playlist(window['-URLVIDEO-'].get()), qualidade_download)
                 else:
-                    downloadUnico(YouTube(window['-URLVIDEO-'].get()), qualidade)
+                    downloadUnico(YouTube(window['-URLVIDEO-'].get()), qualidade_download)
             
-            if tipoDownload == '-cbox_audio-':
+            if tipo_download == '-cbox_audio-':
                 if 'playlist' in window['-URLVIDEO-'].get():
-                    downloadPlaylist(Playlist(window['-URLVIDEO-'].get()), qualidade, 1)
+                    downloadPlaylist(Playlist(window['-URLVIDEO-'].get()), qualidade_download, 1)
                 else:
-                    downloadUnico(YouTube(window['-URLVIDEO-'].get()), qualidade, 1)
+                    downloadUnico(YouTube(window['-URLVIDEO-'].get()), qualidade_download, 1)
 window.close()

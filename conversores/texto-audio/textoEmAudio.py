@@ -5,7 +5,7 @@ import os
 
 texto = """Insira seu texto aqui"""
 
-caminho = os.path.join(os.getcwd(), 'textoEmFalaEFalaEmTexto\\audio\\frase.mp3')
+caminho = os.path.join(os.getcwd(), 'audio\\frase.mp3')
 try:
     frase = gtts.gTTS(texto, lang="pt-br")
     frase.save(caminho)

@@ -1,15 +1,15 @@
 from random import choice, randrange
 
 
-def gerarsenha(qntSenhas, qntCaracter, complexidade):
-    letras = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-    num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
-    especial = ['!', '@', '#', '$', '%', '&', '*', '(', ')', '-', '_', '=', '+', '\\', '|', '/', ',', '<', '.', '>', ';', ':', '[', ']', '{', '}']
-    caracteres = [letras, [letra.upper() for letra in letras], num, especial]
-    for i in range(qntSenhas):
+def gerarSenha(quantidade_senha, quantidade_caracter, complexidade):
+    letra = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    numero = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+    caracter_especial = ['!', '@', '#', '$', '%', '&', '*', '(', ')', '-', '_', '=', '+', '\\', '|', '/', ',', '<', '.', '>', ';', ':', '[', ']', '{', '}']
+    caracteres = [letra, [letra.upper() for letra in letra], numero, caracter_especial]
+    for i in range(quantidade_senha):
         senha = ''
         x = 0
-        for x in range(qntCaracter):
+        for x in range(quantidade_caracter):
             senha += str(choice(caracteres[randrange(0, complexidade + 1)])) 
         print(f"{i + 1}ª) {senha}\n")
 
@@ -23,9 +23,9 @@ printColorido(('***'*20))
 printColorido('    ' + '*-_*_-'*2 + '  Bem-vindo ao gerador de senhas  ' + '*-_*_-'*2 + '    ')
 printColorido(('***'*20))
 while True:
-    qntCaracter = int(input("Quantos caracteres a senha deve ter?\nDigite aqui: "))
+    quantidade_caracter = int(input("Quantos caracteres a senha deve ter?\nDigite aqui: "))
     printColorido('---'*20)
-    qntSenhas = int(input(f"Quantas senhas de {qntCaracter} caracteres deseja gerar?\nDigite aqui: "))
+    quantidade_senha = int(input(f"Quantas senhas de {quantidade_caracter} caracteres deseja gerar?\nDigite aqui: "))
     printColorido('---'*20)
 
     while True:
@@ -35,15 +35,15 @@ while True:
         match complexidade:
             case 1:
                 printColorido("---"*20)
-                gerarsenha(qntSenhas, qntCaracter, complexidade)
+                gerarSenha(quantidade_senha, quantidade_caracter, complexidade)
                 break
             case 2:
                 printColorido("---"*20)
-                gerarsenha(qntSenhas, qntCaracter, complexidade)
+                gerarSenha(quantidade_senha, quantidade_caracter, complexidade)
                 break
             case 3:
                 printColorido("---"*20)
-                gerarsenha(qntSenhas, qntCaracter, complexidade)
+                gerarSenha(quantidade_senha, quantidade_caracter, complexidade)
                 break
             case _:
                 printColorido("---"*20)

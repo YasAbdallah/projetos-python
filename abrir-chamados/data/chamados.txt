@@ -1,0 +1,3 @@
+#Atendido por Ricardo Eloi Schunemann / Apenas fechar: Verificação do backup do servidor de arquivos (arquivos de usuários)
+#Atendido por Ricardo Eloi Schunemann / Apenas fechar: Verificação do backup do servidor de arquivos (pasta de digitalizações)
+#Atendido por Ricardo Eloi Schunemann / Apenas fechar: Verificação do backup do servidor de arquivos (SAP)

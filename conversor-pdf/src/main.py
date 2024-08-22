@@ -1,5 +1,5 @@
-from scripts.prints import Print
-from scripts.conversor import Conversor
+from lib.prints import Print
+from lib.conversor import Conversor
 
 texto = Print()
 

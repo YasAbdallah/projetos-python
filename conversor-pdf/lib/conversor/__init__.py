@@ -4,8 +4,8 @@ import pikepdf
 import subprocess
 import pandas as pd
 from pdf2docx import Converter
-from scripts.prints import Print
-from scripts.manipular_pasta import *
+from lib.prints import Print
+from lib.manipular_pasta import *
 
 
 class Conversor():

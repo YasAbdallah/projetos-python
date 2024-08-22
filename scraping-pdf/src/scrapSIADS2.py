@@ -3,8 +3,9 @@ import json
 from tkinter import filedialog
 import re
 
+pasta = filedialog.askopenfilename(title="Onde está salvo o arquivo .PDF? - Desenvolvido por: Yasser Abdallah.")
 
-leitor_pdf = PdfReader("C:\\Users\\05916892195\\Documents\\GitHub\\projetos-python\\scraping-pdf\\arquivos\\pdf\\lista_materiais.pdf")
+leitor_pdf = PdfReader(pasta)
 conteudo_tradado = list()
 for pagina in range(len(leitor_pdf.pages)):
     pagina_pdf = leitor_pdf.pages[pagina]

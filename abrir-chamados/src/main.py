@@ -4,7 +4,7 @@ from time import sleep
 import os
 
 caminhoDriver = "D:\Temp\scripts\webdriver"
-site = 'https://sa3.receita.fazenda/php/inicio2.php'
+site = ''
 
 xpath = {
     '//a[@title="Acessar com o PIN"]': "",

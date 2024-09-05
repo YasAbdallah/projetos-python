@@ -1,0 +1,57 @@
+[
+    {
+        "sites":{
+            "Nome impressora":"http://192.168.1.100/"
+            
+        }
+    },
+    {
+        "xpath":{
+            
+            "//button[@id='details-button']":"clicar",
+            "//a[@id='proceed-link']":"clicar",
+            "//button[@class='gui-action-btn']":"clicar",
+            "//a[@class='login']":"clicar",
+            "//input[@type='password']":"escrever",
+            "clicar": "//button[@class='gui-action-btn']",
+            "//a[@id='top-cat-Tools']":"clicar",
+            "//div[@aria-label='Informações do produto']":"clicar",
+            "//a[@id='nav-pgDevInfo']":"clicar",
+            "//table[@id='appDevInfo-printerInfo-tbl-Tbl']/tbody/tr[1]/td[2]":"capturarTexto",
+            "//table[@id='appDevInfo-printerInfo-tbl-Tbl']/tbody/tr[2]/td[2]":"capturarTexto",
+            "//table[@id='appDevInfo-printerInfo-tbl-Tbl']/tbody/tr[3]/td[2]":"capturarTexto",
+            "//div[@aria-label='Relatórios']":"clicar",
+            "//a[@id='nav-pgBizUsageReport']":"clicar",
+            "//table[@id='appUsageReport-scan-app-ph-Tbl']/tbody/tr[2]/td[2]":"capturarTexto",
+            "//table[@id='appUsageReport-scan-app-ph-Tbl']/tbody/tr[1]/td[2]":"capturarTexto",
+            "//table[@id='appUsageReport-scan-app-ph-Tbl']/tbody/tr[3]/td[2]":"capturarTexto",
+            "//table[@id='appUsageReport-scan-app-ph-Tbl']/tbody/tr[4]/td[2]":"capturarTexto",
+
+            "//table[@id='appUsageReport-copy-ph-Tbl']/tbody/tr[2]/td[2]":"capturarTexto",
+            "//table[@id='appUsageReport-copy-ph-Tbl']/tbody/tr[1]/td[2]":"capturarTexto",
+            "//table[@id='appUsageReport-copy-ph-Tbl']/tbody/tr[3]/td[2]":"capturarTexto",
+
+            "//table[@id='appUsageReport-fax-app-ph-Tbl']/tbody/tr[2]/td[2]":"capturarTexto",
+            "//table[@id='appUsageReport-fax-app-ph-Tbl']/tbody/tr[1]/td[2]":"capturarTexto",
+            "//table[@id='appUsageReport-fax-app-ph-Tbl']/tbody/tr[4]/td[2]":"capturarTexto",
+            "//table[@id='appUsageReport-fax-app-ph-Tbl']/tbody/tr[5]/td[2]":"capturarTexto",
+            
+            "//table[@id='appUsageReport-media-type-ph-Tbl']/tbody/tr[2]/td[2]":"capturarTexto",
+            "//table[@id='appUsageReport-media-type-ph-Tbl']/tbody/tr[4]/td[2]":"capturarTexto",
+            "//table[@id='appUsageReport-media-type-ph-Tbl']/tbody/tr[1]/td[2]":"capturarTexto",
+            "//table[@id='appUsageReport-media-type-ph-Tbl']/tbody/tr[5]/td[2]":"capturarTexto",
+            "//table[@id='appUsageReport-media-type-ph-Tbl']/tbody/tr[6]/td[2]":"capturarTexto",
+
+            "//table[@id='appUsageReport-scanner-ph-Tbl']/tbody/tr[1]/td[2]":"capturarTexto",
+            "//table[@id='appUsageReport-scanner-ph-Tbl']/tbody/tr[3]/td[2]":"capturarTexto",
+            "//table[@id='appUsageReport-scanner-ph-Tbl']/tbody/tr[4]/td[2]":"capturarTexto",
+
+            "//table[@id='appUsageReport-media-size-print-ph-Tbl-Tbl']/tbody/tr[1]/td[3]":"capturarTexto",
+            "//table[@id='appUsageReport-media-size-print-ph-Tbl-Tbl']/tbody/tr[2]/td[3]":"capturarTexto",
+            
+            "//table[@id='appUsageReport-media-size-copy-ph-Tbl-Tbl']/tbody/tr[1]/td[3]":"capturarTexto",
+            "//table[@id='appUsageReport-media-size-fax-ph-Tbl-Tbl']/tbody/tr[1]/td[3]":"capturarTexto",
+            "//table[@id='appUsageReport-media-a4-equiv-ph-Tbl']/tbody/tr[1]/td[2]":"capturarTexto"
+        }
+    }
+]

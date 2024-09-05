@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.common.exceptions import NoSuchElementException
 from lib.download import Download
 from time import sleep
 import os
@@ -19,7 +20,6 @@ class Navegar:
         self.pathWebDriver = caminhoDriver
         self.versaoWebDriver = [f for d, f, a in os.walk('C:\\Program Files (x86)\\Microsoft\\Edge\\Application')][0][0]
         self.urlWebDriver = f"https://msedgedriver.azureedge.net/{self.versaoWebDriver}/edgedriver_win64.zip"
-        self.tentativa = 0
 
     def abrirSite(self, url):
         """Descrição:
@@ -49,18 +49,14 @@ class Navegar:
             xpath (String): Xpath dos buttons, selects, etc.
             tempo_espera (Int): Valor em número inteiro. Valor em segundos.
         """
-        try:
-             
-            if self.driver.find_element(By.XPATH, xpath):
-                self.driver.find_element(By.XPATH, xpath).click()
-                self.tentativa = 0
-        except Exception as e:
-            if self.tentativa == 3:
-                self.tentativa = 0
-            else:
-                self.tentativa += 1
-                sleep(2)
-                self.clicar(xpath)
+        for tentativa in range(3):
+            try:
+                return self.driver.find_element(By.XPATH, xpath).click()
+            except NoSuchElementException as e:
+                print(f"Tentativa {tentativa + 1}")
+            finally:
+                sleep(3)
+        print(f"{xpath}, botão não encontrado!. Indo para o próximo botão!")
 
 
     def escrever(self, xpath, texto):
@@ -72,18 +68,14 @@ class Navegar:
             texto (String): Texto para preencher os inputs.
             tempo_espera (Int): Valor em número inteiro. Valor em segundos.
         """
-        try:
-            if self.driver.find_element(By.XPATH, xpath): 
-                self.driver.find_element(By.XPATH, xpath).send_keys(texto) 
-                self.tentativa = 0
-            
-        except Exception as e:
-            if self.tentativa == 3:
-                self.tentativa = 0
-            else:
-                self.tentativa += 1
-                sleep(2)
-                self.escrever(xpath, texto)
+        for tentativa in range(3):
+            try:
+                return self.driver.find_element(By.XPATH, xpath).send_keys(texto) 
+            except NoSuchElementException as e:
+                print(f"Tentativa {tentativa + 1}")
+            finally:
+                sleep(3)
+        print(f"{xpath}, campo de texto não encontrado!. Indo para o próximo!")
 
 
     def capturarTexto(self, xpath):
@@ -96,17 +88,18 @@ class Navegar:
         Return:
             Valor em (String, Int, Any).
         """
-        try:
-            if self.driver.find_element(By.XPATH, xpath):
-                self.tentativa = 0
-                return self.driver.find_element(By.XPATH, xpath).text
-        except Exception as e:
-            if self.tentativa == 3:
-                self.tentativa = 0
-            else:
-                self.tentativa += 1
-                sleep(2)
-                self.capturarTexto(xpath)
+        for tentativa in range(3):
+            try:
+                if xpath in (None, '0', ''):
+                    return '0'
+                else:
+                    return self.driver.find_element(By.XPATH, xpath).text
+            except NoSuchElementException as e:
+                print(f"Tentativa {tentativa + 1}")
+            finally:
+                sleep(3)
+        print(f"{xpath}, campo para captura não econtrado. Indo para o próximo botão!")
+
 
     def fecharNavegador(self):
         try:

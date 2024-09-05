@@ -64,7 +64,7 @@ def criarPDFMultifuncional(**kwargs):
     cnv.drawString(mm2p(14), mm2p(185), f"Imagens digitalizadas(alimentador de documentos): {args[12]}")
     cnv.drawString(mm2p(14), mm2p(180), f"Imagens digitalizadas(Vidro do scanner): {args[13]}")
     cnv.drawString(mm2p(115), mm2p(185), f"Total faxes enviados: {args[14]}")
-    cnv.drawString(mm2p(115), mm2p(180), f"Total faxes enciados (enviados do computador): {args[15]}")
+    cnv.drawString(mm2p(115), mm2p(180), f"Total faxes enviados (enviados do computador): {args[15]}")
 
     cnv.setFont('Arial-Bold', 10)
     cnv.drawString(mm2p(14), mm2p(170), "Mecanismo impr")

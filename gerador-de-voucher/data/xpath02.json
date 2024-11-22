@@ -1,0 +1,15 @@
+{
+    "//*[@id='details-button']": "",
+    "//*[@id='proceed-link']": "",
+    "//input[@name='username']": "username",
+    "//input[@name='password']": "pwd",
+    "//button[@id='loginButton']": "",
+    "//div[@alt='Settings']": "",
+    "//unifi-settings-side-nav//unifi-settings-nav//span[text()='Wireless Networks']":"",
+    "//unifi-settings-nav//span[text()='Wireless Networks']": "",
+    "//select//option[text()='satec']": "",
+    "//tr[2]//td[@class='wlanActions appTableCell--actions']//button[1]":"",
+    "//tr[1]//td[@class='wlanActions appTableCell--actions']//button[1]": "",
+    "//div[@class='appRow']//input[@type='password']": "senhaWifi",
+    "//button//div[text()='Save']": ""
+}

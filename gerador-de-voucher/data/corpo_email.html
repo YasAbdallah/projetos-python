@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Senha do Mês</title>
+    <style>
+        body {
+            background-color: #eeeeee;
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .content h1 {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        .password {
+            padding: 80px;
+            font-size: 45px;
+            color: #222;
+        }
+        .instructions {
+            font-size: 15px;
+            margin: 0 20px;
+        }
+        .automatic-email {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 18px;
+            margin-top: 45px;
+            color: #555;
+        }
+        footer {
+            background-color: #eaeaea;
+            padding: 20px;
+            font-size: 12px;
+            text-align: left;
+        }
+        footer strong {
+            font-size: 16px;
+            font-family: Garamond, serif;
+        }
+        footer ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+        footer ul li {
+            margin: 5px 0;
+        }
+        footer a {
+            color: #333;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Olá, segue a nova senha do mês de {{mes}}.</h1>
+        <div class="password">{{senha}}</div>
+        <p class="instructions">
+            Esta é a nova senha para a rede "Viajantes". Ela é válida até 
+            <mark>{{validade}}</mark>.
+        </p>
+        <p class="instructions">
+            Em caso de dúvidas ou problemas com a senha enviada, informe o responsável pelo controle da internet.
+        </p>
+        <p class="automatic-email">Este e-mail é automático. Por favor, não responda.</p>
+    </div>
+    <hr>
+    <footer>
+        <strong>Desenvolvido por:</strong> Yasser Ibrahim Abdallah Vaz Condoluci<br>
+        <i>Engenheiro de software</i>
+        <ul>
+            <li><strong>Telefone:</strong> (67) 9 9167-8140</li>
+            <li><strong>E-mail:</strong> <a href="mailto:yassercondoluci@hotmail.com">Clique aqui</a> e entre em contato.</li>
+            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/yasser-ibrahim-abdallah/">Veja meu LinkedIn</a></li>
+            <li><strong>GitHub:</strong> <a href="https://github.com/YasAbdallah">Veja meu GitHub</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

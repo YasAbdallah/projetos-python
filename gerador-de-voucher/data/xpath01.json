@@ -1,0 +1,20 @@
+
+{
+    "//*[@id='details-button']": "",
+    "//*[@id='proceed-link']": "",
+    "//input[@name='username']": "username",
+    "//input[@name='password']": "password",
+    "//button[@id='loginButton']": "",
+    "//div[@class='ubntIcon ubntIcon--navigation icon ubnt-icon--news']": "",
+    "//button[@title='Create vouchers']": "",
+    "//input[@title='number of vouchers']": 1,
+    "//select//option[@label='Multi use (unlimited)']": "",
+    "//select//option[@label='User-defined']": "",
+    "//input[@name='expire_number']": 30,
+    "//input[@id='limitDownload']": "",
+   " //input[@type='number' and @name='down']": 5632,
+    "//input[@id='limitUpload']": "",
+    "//input[@type='number' and @name='up']": 5632,
+    "//div[@class='busyToggle__body ng-scope' and text()='Save']": "",
+    "//table[@id='vouchersTable']/tbody/tr[1]/td[2]": "getText"
+}

@@ -1,17 +1,17 @@
 [
-    {
-        "sites":{
-            "Nome impressora":"http://192.168.1.100/"
-        }
-    },
-    {
-        "xpath":{
-            "//button[@id='details-button']": "clicar",
-            "//a[@id='proceed-link']": "clicar",
-            "//input[@id='USERNAME']": "escrever",
-            "//button[@name='LoginButton']": "clicar",
-            "//span[text()='Controlo estado/Cancelar']": "clicar",
-            "//a[text()='Verificar Contador ']": "clicar"
-        }
+  {
+    "sites": {
+      "EGC Colorida":"http://10.51.102.78/"
     }
+  },
+  {
+    "xpath": {
+      "//button[@id='details-button']": "clicar",
+      "//a[@id='proceed-link']": "clicar",
+      "//input[@id='USERNAME']": "escrever",
+      "//button[@name='LoginButton']": "clicar",
+      "//span[text()='Controlo estado/Cancelar']": "clicar",
+      "//a[text()='Verificar Contador ']": "clicar"
+    }
+  }
 ]

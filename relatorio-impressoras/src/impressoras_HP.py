@@ -7,7 +7,7 @@ from lib.navegacao import Navegar
 from lib.funcoes import mensagem, criarPDFSimples, criarPDFMultifuncional, abrir_pasta
 
 diretorio_webDriver = ".\\webdriver\\"
-login_impressora = ['usuario', "senha"]
+login_impressora = ['administrator', "irf@$3004"]
 
 diretorio_rede_salvar_pdf = f"C:\\Users\\{os.getlogin()}\\Downloads\\_Relatorios_impressoras_HP\\{datetime.today().month - 1}\\"
 
@@ -19,6 +19,19 @@ data_hoje = f"{datetime.today().day}-{datetime.today().month}-{datetime.today().
 mensagem("Iniciando Geração de relatório.", "A geração de relatório está iniciando. A captura dos dados dura, em média, 7 minutos. Fique a vontade para fazer outra coisa enquanto o relatório é gerado", tempo=5)
 
 driver = Navegar(caminhoDriver=diretorio_webDriver)
+
+# Impressora Colorida
+with open(os.path.join(os.path.dirname(__file__), "..", "data", "impressora_colorida.json"), encoding="utf-8") as impressora_colorida:
+    data = json.load(impressora_colorida)
+    for setor, site in data[0]["sites"].items():
+        driver.abrirSite(site)
+        for key, value in data[1]["xpath"].items():
+            if "clicar" in (key, value):
+                driver.clicar(value) if "clicar" in key else driver.clicar(key)
+            if "escrever" in (key, value):
+                driver.escrever(value, login_impressora[0]) if "escrever" in key else driver.escrever(key, login_impressora[0])
+    img = ImageGrab.grab()
+    img.save(os.path.join(diretorio_rede_salvar_pdf, "Relatorio_impressora_CANON_EGC.pdf"))
 
 # Impressoras Multifuncional
 with open(os.path.join(os.path.dirname(__file__), "..", "data", "impressora_multifuncional.json"), encoding="utf-8") as impressora_multifuncional:
@@ -35,12 +48,9 @@ with open(os.path.join(os.path.dirname(__file__), "..", "data", "impressora_mult
                 driver.escrever(value, login_impressora[1]) if "escrever" in key else driver.escrever(key, login_impressora[1])
             if "capturarTexto" in (key, value):
                 info_impressora.append(str(driver.capturarTexto(key)))
-                print(info_impressora)
-                 
-        
         mensagem("Captura de dados.", f"Captura de dados do setor {setor} finalizado.")
         mensagem("Criação de PDF", "Iniciando a criação do PDF da impressora.")
-        print(info_impressora)
+        
         criarPDFMultifuncional(
             setor=setor, 
             modelo='HP LaserJet Pro MFP 4103 series',
@@ -88,7 +98,6 @@ with open(os.path.join(os.path.dirname(__file__), "..", "data", "impressora_simp
         driver.abrirSite(site)
         mensagem("Iniciando captira dos dados.", f"Iniciando captura dos dados do setor: {nome_setor}")
         for key, value in data[1]["xpath"].items():
-            print(key, value)
             if "clicar" in (key, value):
                 driver.clicar(value) if "clicar" in key else driver.clicar(key)
             if "escrever" in (key, value):
@@ -105,19 +114,6 @@ with open(os.path.join(os.path.dirname(__file__), "..", "data", "impressora_simp
         )
         del info_impressora
         mensagem("Criação de PDF.", f"PDF do setor {setor} finalizado.")     
-
-# Impressora Colorida
-with open(os.path.join(os.path.dirname(__file__), "..", "data", "impressora_colorida.json"), encoding="utf-8") as impressora_colorida:
-    data = json.load(impressora_colorida)
-    for setor, site in data[0]["sites"].items():
-        driver.abrirSite(site)
-        for key, value in data[1]["xpath"].items():
-            if "clicar" in (key, value):
-                driver.clicar(value) if "clicar" in key else driver.clicar(key)
-            if "escrever" in (key, value):
-                driver.escrever(value, login_impressora[0]) if "escrever" in key else driver.escrever(key, login_impressora[0])
-    img = ImageGrab.grab()
-    img.save(os.path.join(diretorio_rede_salvar_pdf, "Relatorio_impressora_CANON_EGC.pdf"))
 
 mensagem("Tudo pronto.", f"Verfique se foram feitos todos os relatórios das impressoras.")
 

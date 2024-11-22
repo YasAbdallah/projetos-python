@@ -55,7 +55,7 @@ class Navegar:
             except NoSuchElementException as e:
                 print(f"Tentativa {tentativa + 1}")
             finally:
-                sleep(3)
+                sleep(1)
         print(f"{xpath}, botão não encontrado!. Indo para o próximo botão!")
 
 
@@ -74,7 +74,7 @@ class Navegar:
             except NoSuchElementException as e:
                 print(f"Tentativa {tentativa + 1}")
             finally:
-                sleep(3)
+                sleep(1)
         print(f"{xpath}, campo de texto não encontrado!. Indo para o próximo!")
 
 
@@ -97,7 +97,7 @@ class Navegar:
             except NoSuchElementException as e:
                 print(f"Tentativa {tentativa + 1}")
             finally:
-                sleep(3)
+                sleep(1)
         print(f"{xpath}, campo para captura não econtrado. Indo para o próximo botão!")
 
 

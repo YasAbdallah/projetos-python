@@ -1,12 +1,14 @@
+import os
+import re
+import shutil
+import subprocess
+
 import pymsgbox
-from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-import shutil
-import subprocess
-import os
-import re
+from reportlab.pdfgen import canvas
+
 
 def mensagem(titulo, texto, tempo=3):
     """Popup informativo

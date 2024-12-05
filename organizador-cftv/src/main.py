@@ -2,7 +2,7 @@
 Script Criado para organizar arquivos de video dentro de pastas especificas geradas  de um progrograma de CFTV.
 """
 
-from lib import *
+from lib import msg, criarArqLog, logUnidadeHDs, organizarListaImgs, copiarArquivos
 
 
 msg("Iniciando Script de organização.", "Aguarde uns instantes que já vou começar a organizar as coisas.", timer=3000)

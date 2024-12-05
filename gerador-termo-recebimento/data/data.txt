@@ -1,0 +1,23 @@
+Nome do Token: Inicializado RFB
+Categoria do Token: Hardware
+Nome do leitor: Aladdin Token JC 0
+NÃºmero de sÃ©rie: 0x01d8649f
+EspaÃ§o livre no cartÃ£o de token (minimum estimated): 32767
+VersÃ£o do Hardware: 4.30
+VersÃ£o do Firmware: N/A
+ID do cartÃ£o: 01D8649F
+Nome do produto: eToken PRO Java 72K OS755
+Tipo de CartÃ£o: Desconhecido
+VersÃ£o OS: eToken Java Applet 1.1.25
+VersÃ£o da mÃ¡scara: 8.5 (8.5)
+PIN do token: Presente
+Tentativas restantes de  PIN de token: 5
+Tentativas mÃ¡ximas de PIN do token: 5
+ExpiraÃ§Ã£o da PIN do token: Sem expiraÃ§Ã£o
+PIN do administrador: Ausente
+FIPS: FIPS 140-2 L2 compatÃ­vel
+Entre padding a bordo: NÃ£o
+Tamanho de chave suportado: 2048 bits
+ECC: N/A
+CSP: eToken Base Cryptographic Provider
+KSP: SafeNet Smart Card Key Storage Provider

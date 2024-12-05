@@ -1,7 +1,8 @@
+import os
+
+from lib.download import Download
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from lib.download import Download
-import os
 
 
 class Navegar:
@@ -37,8 +38,7 @@ class Navegar:
             download.descompactarZip(self.pathWebDriver)
             download.deletarZip()
             self.abrirSite()
-            
-    
+
     def clicar(self, xpath):
         """Descrição:
             Realiza a navegação no site.
@@ -52,7 +52,6 @@ class Navegar:
             print("Erro ao tentar clicar")
             pass
 
-
     def escrever(self, xpath, texto):
         """Descrição:
             Preenche os campos de texto.
@@ -62,11 +61,11 @@ class Navegar:
             texto (String): Texto para preencher os inputs.
         """
         try:
-            self.driver.find_element(By.XPATH, xpath).send_keys(texto) if self.driver.find_element(By.XPATH, xpath) else None
+            self.driver.find_element(By.XPATH, xpath).send_keys(texto) if self.driver.find_element(By.XPATH,
+                                                                                                   xpath) else None
         except Exception as e:
             print("Erro ao tentar escrever.")
             pass
-
 
     def capturarTexto(self, xpath):
         try:

@@ -1,12 +1,13 @@
+import os
 from urllib.request import urlretrieve
 from zipfile import ZipFile
-import os
 
 
 class Download:
     """Classe Download foi desenvolvida para fazer download de WebDriver para automações web.
     Seu objetivo é automatizar o download e descompactar o arquivo .zip e deletar após a descompactação em uma pasta especifica.
     """
+
     def __init__(self):
         self.pathDownload = ''
         self.pathDescompactar = ''

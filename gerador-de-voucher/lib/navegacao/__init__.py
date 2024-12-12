@@ -12,17 +12,17 @@ from selenium.webdriver.edge.service import Service
 class Navegar:
 
 
-    def __init__(self, site, caminhoDriver, xpaths):
+    def __init__(self, site, caminho_driver, xpaths):
         """
         :param site: Informar o site que o sistema deve fazer a navegação
-        :param caminhoDrive: O caminho onde está localizado o webDriver do navegador
-        :param urlWebDriver: Informar o site onde é feito o download
+        :param caminho_drive: O caminho onde está localizado o webDriver do navegador
+        :param url_web_driver: Informar o site onde é feito o download
         :param xpath: Informar um dicionario com o xpath e do que deseja ser feito. No caso do click apenas uma string vazia ''
         """
         self.site = site
-        self.caminhoDriver = caminhoDriver
-        self.versaoDriver = [f for d, f, a in os.walk('C:\\Program Files (x86)\\Microsoft\\Edge\\Application')][0][0]
-        self.urlWebDriver = f"https://msedgedriver.azureedge.net/{self.versaoDriver}/edgedriver_win64.zip"
+        self.caminho_driver = caminho_driver
+        self.versao_driver = [f for d, f, a in os.walk('C:\\Program Files (x86)\\Microsoft\\Edge\\Application')][0][0]
+        self.url_web_driver = f"https://msedgedriver.azureedge.net/{self.versao_driver}/edgedriver_win64.zip"
         self.xpaths = xpaths
         self.driver = ''
         self.logger = configurar_logger(nome_logger="navegador_auto", arquivo_log=os.path.abspath(os.path.join('data', "logs", "navegador_auto.log")), nivel=logging.DEBUG)
@@ -36,7 +36,7 @@ class Navegar:
         except Exception as e:
             self.logger.error(f"Ocorreu um erro ao tentar abrir Navegador Automatico {e}")
             self.logger.info("Realizando download do Driver mais recente.")
-            download = Download(self.urlWebDriver, self.caminhoDriver, self.caminhoDriver)
+            download = Download(self.url_web_driver, self.caminho_driver, self.caminho_driver)
             download.download()
         return None
 
@@ -46,13 +46,13 @@ class Navegar:
             for xpath, texto in self.xpaths.items():
                 sleep(3)
                 if texto == 'getText':
-                    pegarTexto = self.clicar(xpath=xpath)
+                    pegar_texto = self.clicar(xpath=xpath)
                 elif texto != '':
                     self.escrever(xpath=xpath, texto=texto)
                 else:
                     self.clicar(xpath=xpath)
             self.driver.close()
-            return pegarTexto
+            return pegar_texto
         except Exception as e:
            self.logger.error(f"Erro a navegar pelo site {self.site}: {e}")
         return None

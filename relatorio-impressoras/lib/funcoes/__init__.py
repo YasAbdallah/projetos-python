@@ -1,11 +1,19 @@
+import os
+import json
+import shutil
 import pymsgbox
+import subprocess
+from lib.prints import Print
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-import shutil
-import subprocess
-import os
+
+
+def limpar_tela():
+    """Limpa a tela do terminal."""
+    os.system('cls' if os.name == 'nt' else 'clear')
+    return None
 
 def mensagem(titulo, texto, tempo=3):
     """Popup informativo
@@ -138,8 +146,8 @@ def criarPDFMultifuncional(**kwargs):
     cnv.drawString(mm2p(90), mm2p(42), f"{args[29]}")
 
     cnv.save()
-    shutil.move(args[-2], args[-1]+args[-2])
-
+    
+    return shutil.move(args[-2], args[-1]+args[-2])
 
 def criarPDFSimples(**kwargs):
     args = [value for key, value in kwargs.items()]
@@ -194,7 +202,8 @@ def criarPDFSimples(**kwargs):
     cnv.drawString(mm2p(90), mm2p(137), f"{args[12]}")
 
     cnv.save()
-    shutil.move(args[-2], args[-1]+args[-2])
+    
+    return shutil.move(args[-2], args[-1]+args[-2])
 
 
 def mm2p(mm):
@@ -206,3 +215,58 @@ def abrir_pasta(caminho_do_arquivo):
         subprocess.run(f'explorer /select,"{os.path.abspath(caminho_do_arquivo)}"')
     else:
         print(f"Arquivo {caminho_do_arquivo} não encontrado")
+
+
+def realizar_ping(host):
+    """
+    Realiza um ping em um host e retorna o resultado.
+    
+    :param host: Endereço ou IP do host para testar o ping.
+    :return: Verdadeiro se o ping for bem-sucedido, Falso caso contrário.
+    """
+    try:
+        if "http" in host:
+            host = host.replace("https://", "").replace("http://", "").replace("/", "")
+        # Comando do ping
+        comando = ['ping', '-c', '4', host] if subprocess.os.name != 'nt' else ['ping', '-n', '4', host]
+        resultado = subprocess.run(comando, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=False)
+        # Retorna True se a execução foi bem-sucedida (código 0)
+        return resultado.returncode == 0, resultado.stdout
+    except Exception as e:
+        return False, str(e)
+
+
+def verificar_conexao_impressoras(dados_impressoras, tipo_impressora):
+    """
+    Verifica a conexão das impressoras de um determinado tipo e realiza o ping para cada setor e site.
+
+    :param dados_impressoras: Dados das impressoras (simples, multifuncional ou colorida).
+    :param tipo_impressora: Tipo de impressora (ex: "simples", "multifuncional", "colorida").
+    """
+    printar = Print()
+
+    printar.print_amarelo(f"Verificando Conexão das impressoras {tipo_impressora}...")
+    
+    for setor, site in dados_impressoras[0]["sites"].items():
+        sucesso, mensagem = realizar_ping(site)
+        print(f"Ping para {setor} foi bem-sucedido!" if sucesso else f"Falha no ping para {setor}")
+        printar.print_magenta("_" * 40)
+    
+    printar.print_amarelo("_" * 70)
+
+
+def main_verificar_conexoes(caminhos):
+    """
+    Função principal para verificar conexões de impressoras de diferentes tipos.
+    
+    :param ler_dados: Função para leitura de dados de arquivos JSON.
+    """    
+    for tipo, caminho in caminhos.items():
+        dados = ler_dados(caminho)
+        verificar_conexao_impressoras(dados, tipo)
+
+
+def ler_dados(caminho):
+    with open(caminho, encoding="utf-8") as dados:
+        data = json.load(dados)
+    return data

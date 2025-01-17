@@ -30,6 +30,8 @@ class Navegar:
         """
         try:
             opcoes = webdriver.EdgeOptions()
+            opcoes.add_argument("--disable-gpu")
+            opcoes.add_argument("--log-level=3")
             self.driver = webdriver.Edge(options=opcoes)
             self.driver.maximize_window()
             return self.driver.get(url)

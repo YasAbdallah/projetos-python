@@ -1,7 +1,9 @@
 import os
+import sys
+import ctypes
 from lib.prints import Print
-from src.impressoras_HP import gerar_relatorio_simples_todos, gerar_relatorio_multifuncional_todos, gerar_relatorio_hp_colorido
 from lib.funcoes import limpar_tela, realizar_ping, main_verificar_conexoes
+from src.impressoras_HP import gerar_relatorio_simples_todos, gerar_relatorio_multifuncional_todos, gerar_relatorio_hp_colorido
 
 
 def escolher_tipo_relatorio_hp():
@@ -93,6 +95,11 @@ def gerar_relatorio_OKI(opcao_relatorio):
 
 
 printar = Print()
+
+# Apenas tente habilitar o modo de terminal ANSI se estivermos no Windows
+if os.name == 'nt':
+    kernel32 = ctypes.windll.kernel32
+    kernel32.SetConsoleMode(kernel32.GetStdHandle(-11), 7)
 
 printar.print_colorido("*" * 70, "\n", "Bem vindo ao gerador de relatório de impressora.", "\n", "*" * 70)
 printar.print_azul("-" * 30, " Desenvolvido por: Yasser Ibrahim.", "\n \n")

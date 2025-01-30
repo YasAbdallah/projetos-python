@@ -249,9 +249,13 @@ def verificar_conexao_impressoras(dados_impressoras, tipo_impressora):
     
     for setor, site in dados_impressoras[0]["sites"].items():
         sucesso, mensagem = realizar_ping(site)
-        print(f"Ping para {setor} foi bem-sucedido!" if sucesso else f"Falha no ping para {setor}")
         printar.print_magenta("_" * 40)
-    
+        print(f"Ping para {setor} -> ", end="", flush=True)
+        
+        if sucesso: 
+            printar.print_verde(f"foi bem-sucedido!")
+        else:
+            printar.print_vermelho("Falhou. Impressora desligada ou fora da rede.")
     printar.print_amarelo("_" * 70)
 
 

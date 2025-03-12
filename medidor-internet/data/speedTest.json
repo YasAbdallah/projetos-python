@@ -1,0 +1,7 @@
+{
+    "//button[text() = 'Aceitar cookies' or text() = 'Continue' or text() = 'Continuar']": "",
+    "//span[@class='start-text']": "",
+    "//button[text() = 'Close']": "",
+    "//span[@class='result-data-large number result-data-value download-speed']": "getText",
+    "//span[@class='result-data-large number result-data-value upload-speed']": "getText"
+}

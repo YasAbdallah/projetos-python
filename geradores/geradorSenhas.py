@@ -1,5 +1,11 @@
+import os
+import sys
+import ctypes
 from random import choice, randrange
-
+# Apenas tente habilitar o modo de terminal ANSI se estivermos no Windows
+if os.name == 'nt':
+    kernel32 = ctypes.windll.kernel32
+    kernel32.SetConsoleMode(kernel32.GetStdHandle(-11), 7)
 
 def gerarSenha(quantidade_senha, quantidade_caracter, complexidade):
     letra = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']

@@ -1,11 +1,11 @@
 Nome do Token: Inicializado RFB
 Categoria do Token: Hardware
 Nome do leitor: Aladdin Token JC 0
-NÃºmero de sÃ©rie: 0x01d8649f
+NÃºmero de sÃ©rie: 0x01d81a2e
 EspaÃ§o livre no cartÃ£o de token (minimum estimated): 32767
 VersÃ£o do Hardware: 4.30
 VersÃ£o do Firmware: N/A
-ID do cartÃ£o: 01D8649F
+ID do cartÃ£o: 01D81A2E
 Nome do produto: eToken PRO Java 72K OS755
 Tipo de CartÃ£o: Desconhecido
 VersÃ£o OS: eToken Java Applet 1.1.25

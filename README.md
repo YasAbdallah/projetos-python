@@ -19,6 +19,17 @@ Este repositório tem alguns de meus scripts de teste.
 | [Organizador de pasta](https://github.com/YasAbdallah/projetosPython/blob/main/otimizadores/organizadorDownloads.py) | Verifica uma pasta que o usuário escolher e a organiza conforme as extensões<br>dos arquivos.|
 | [Scraping PDF](https://github.com/YasAbdallah/projetosPython/tree/main/scrapingPdf) | Verifica um arquivo PDF especifico gerado por um sistema específico para obter<br>informações de produtos de almoxarifado.|
 
+
 ## Autor
 
 - [@YasAbdallah](https://www.github.com/YasAbdallah)
+
+
+## Contato
+
+Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato:
+
+- Email: [yassercondoluci@hotmail.com](mailto:yassercondoluci@hotmail.com)
+- LinkedIn: [Yasser Ibrahim](https://www.linkedin.com/in/yasser-ibrahim-abdallah/)
+- GitHub: [@YasAbdallah](https://www.github.com/YasAbdallah)
+

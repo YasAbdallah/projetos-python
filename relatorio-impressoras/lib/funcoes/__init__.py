@@ -15,6 +15,7 @@ def limpar_tela():
     os.system('cls' if os.name == 'nt' else 'clear')
     return None
 
+
 def mensagem(titulo, texto, tempo=3):
     """Popup informativo
 
@@ -149,6 +150,7 @@ def criarPDFMultifuncional(**kwargs):
     
     return shutil.move(args[-2], args[-1]+args[-2])
 
+
 def criarPDFSimples(**kwargs):
     args = [value for key, value in kwargs.items()]
     cnv = canvas.Canvas(args[-2], pagesize=A4)
@@ -229,9 +231,12 @@ def realizar_ping(host):
             host = host.replace("https://", "").replace("http://", "").replace("/", "")
         # Comando do ping
         comando = ['ping', '-c', '4', host] if subprocess.os.name != 'nt' else ['ping', '-n', '4', host]
-        resultado = subprocess.run(comando, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=False)
+        resultado = subprocess.run(comando, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        # Verifica se a saída contém "Host de destino inacessível" ou "Destination Host Unreachable"
+        if ("Host de destino" in resultado.stdout) or ("Destination Host" in resultado.stdout):
+            return False
         # Retorna True se a execução foi bem-sucedida (código 0)
-        return resultado.returncode == 0, resultado.stdout
+        return True
     except Exception as e:
         return False, str(e)
 
@@ -248,11 +253,11 @@ def verificar_conexao_impressoras(dados_impressoras, tipo_impressora):
     printar.print_amarelo(f"Verificando Conexão das impressoras {tipo_impressora}...")
     
     for setor, site in dados_impressoras[0]["sites"].items():
-        sucesso, mensagem = realizar_ping(site)
+        resultado_ping = realizar_ping(site)
         printar.print_magenta("_" * 40)
         print(f"Ping para {setor} -> ", end="", flush=True)
         
-        if sucesso: 
+        if resultado_ping: 
             printar.print_verde(f"foi bem-sucedido!")
         else:
             printar.print_vermelho("Falhou. Impressora desligada ou fora da rede.")
@@ -274,3 +279,5 @@ def ler_dados(caminho):
     with open(caminho, encoding="utf-8") as dados:
         data = json.load(dados)
     return data
+
+

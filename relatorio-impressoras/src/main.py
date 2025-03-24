@@ -3,7 +3,7 @@ import sys
 import ctypes
 from lib.prints import Print
 from lib.funcoes import limpar_tela, realizar_ping, main_verificar_conexoes
-from src.impressoras_HP import gerar_relatorio_simples_todos, gerar_relatorio_multifuncional_todos, gerar_relatorio_hp_colorido
+from src.impressoras_HP import gerar_relatorio_simples_todos, gerar_relatorio_multifuncional_todos, gerar_relatorio_hp_colorido, gerar_relatorio_hp_simples, gerar_relatorio_hp_multifuncional
 
 
 def escolher_tipo_relatorio_hp():
@@ -96,7 +96,7 @@ def gerar_relatorio_OKI(opcao_relatorio):
 
 printar = Print()
 
-# Apenas tente habilitar o modo de terminal ANSI se estivermos no Windows
+# Apenas tenta habilitar o modo de terminal ANSI se estivermos no Windows
 if os.name == 'nt':
     kernel32 = ctypes.windll.kernel32
     kernel32.SetConsoleMode(kernel32.GetStdHandle(-11), 7)
@@ -108,7 +108,7 @@ tipo_impressora = None
 while True:
     tipo_impressora = input("""Digite o tipo de impressora que deseja gerar o relatório? 
     [1] - Impressoras HP/Canon Colorida.
-    [2] - Impressoras OKI.
+    [2] - Impressoras OKI. (DESCONTINUADO)
     [3] - Sair.
     Digite o número da opção: """)
 

@@ -65,6 +65,7 @@ def salvar_PDF_multifuncional(setor, info_impressora, diretorio_rede_salvar_pdf=
     printar.print_verde(f"PDF do setor {setor} finalizado.")
     return True
 
+
 def salvar_PDF_simples(setor, info_impressora, diretorio_rede_salvar_pdf=diretorio_rede_salvar_pdf):
     nome_setor = str(setor).replace(",", "_").replace(".", "_").replace(" ", "").replace(":","")
     criarPDFSimples(
@@ -128,6 +129,7 @@ def gerar_relatorio_multifuncional_todos(login_impressora=login_impressora):
     printar.print_verde(f"Processo finalizado. Foram gerados {contador} relatórios.")
     return
 
+
 def gerar_relatorio_multifuncional_unitario(login_impressora=login_impressora):
     limpar_tela()
     dados_impressora_multifuncional = ler_dados(os.path.join(os.path.dirname(__file__), "..", "data", "impressora_multifuncional.json"))
@@ -166,6 +168,7 @@ def gerar_relatorio_multifuncional_unitario(login_impressora=login_impressora):
             driver.fecharNavegador()
             break
     return 
+
 
 def gerar_relatorio_hp_multifuncional(resultado):
     if resultado == "1":
@@ -207,6 +210,7 @@ def gerar_relatorio_simples_todos(login_impressora=login_impressora):
     printar.print_verde(f"Processo finalizado. Foram gerados {contador} relatórios.")
     return
 
+
 def gerar_relatorio_simples_unitario(login_impressora=login_impressora):
     limpar_tela()
 
@@ -243,6 +247,7 @@ def gerar_relatorio_simples_unitario(login_impressora=login_impressora):
             driver.fecharNavegador()
             break
     return 
+
 
 def gerar_relatorio_hp_simples(resultado):
     if resultado == "1":
